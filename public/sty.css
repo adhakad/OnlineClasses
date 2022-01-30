@@ -1,0 +1,162 @@
+.font-img{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;font-weight: 600;letter-spacing: 0.2em;text-align: center;
+}
+.img{
+  background-color: #f5f5f7;border-radius: 15px;margin-top: 15px;
+}
+  /*---------------------top nav section--------------------*/
+  .top-nav{
+    background-color:#724ccc;
+    width: 100%;
+    height:10vh;
+    padding: 4%;
+    position: fixed;
+    z-index: 3;
+    border-bottom: 1px solid rgb(173, 175, 189);
+    border-top: 2px solid #fff;
+   }
+/*---------------------overlay section--------------------*/
+.overlay{
+  background: rgba(0, 0, 0, 0.75);
+  width:100%;
+  height: 100vh;
+  padding: 0;
+  display: none;
+  font-size: 35px;
+  font-weight: 500;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.35);
+  position: fixed;
+  z-index: 10;
+}
+ul {
+  background: #fff;
+  width:100%;
+  height: 60vh;
+  margin-top: 40vh;
+  padding: 0;
+  display: none;
+  font-size: 30px;
+  font-weight: 500;
+  border-radius:40px 40px 0 0;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.35);
+  position: fixed;
+  z-index: 4;
+  padding-top: 150px;
+}
+ul li {
+  margin-right: 30%;
+  list-style: none;
+  display: block;
+  padding: 20px;
+  text-align: left;
+}
+ul li a{
+  color: rgb(84, 87, 121);
+  border-bottom: 2px solid rgb(190, 189, 189);
+}
+/*---------------------bottom nav section--------------------*/
+  .bnav{
+    background-color:rgb(251, 250, 252);
+    position: fixed;
+    width: 100%;
+    height:10vh;
+    bottom: 0;
+    left: 0;
+    padding:0;
+    padding-top: 1vh;
+    border-top: 3px solid rgb(220, 220, 224);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+    z-index: 2;
+  }
+ .bnav-item{
+  position: relative;
+  font-size: 31px;
+  padding-right: 5%;
+  padding-left: 9%;
+  margin-top: 20px;
+  float: left;
+  outline: none;
+  display: block;
+}
+.bnav-link-active{
+  color: rgb(95, 92, 112);/*rgb(159, 103, 255)*/
+  bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;font-size: 32px;letter-spacing: 0.09em;font-weight: 700;
+}
+.bnav-link{
+  color:rgb(125, 122, 139);
+  bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;font-size: 32px;letter-spacing: 0.09em;font-weight: 700;
+}
+.fa{
+  display: block;
+  font-size: 60px;
+  text-align: center;
+}
+.toggle{
+  width: 100%;
+  margin-top: 18px;
+  text-align: right;
+  text-align: center;
+}
+.toggle .menu{
+  cursor: pointer;
+  color:rgb(139, 131, 153);
+  margin-top: 0px;
+  font-family: Arial, Helvetica, sans-serif;font-size: 32px;letter-spacing: 0.09em;font-weight: 700;
+  }
+.kebab{
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-top: 5px;
+  text-align: center;
+  text-align: center;
+}
+.kebab figure{
+  width: 12px;
+  height: 12px;
+  border-radius: 8px;
+  background:rgb(139, 131, 153);
+  margin: 5px 0;
+}
+.active{
+  display: block;
+}
+.more-tab{
+  display: inline-block;margin-left: 50px;
+}
+
+
+
+/*********************************dashboard****************************************/
+.logo-tag{
+  color:#fff;
+  margin-left:5%;
+  font-family: Arial, Helvetica, sans-serif;font-size: 70px;letter-spacing: 0.01em;
+}
+span{
+color: #000;
+font-family: Arial, Helvetica, sans-serif;font-size:80px;letter-spacing: 0.01em;
+}
+h2{
+  font-size: 37px;
+  letter-spacing: .025em;
+  font-weight: 900;
+  color: #483884;
+}
+
+h3{
+  letter-spacing: .015em;
+  font-weight: 700;
+  font-size: 32px;
+  color:rgb(101, 83, 199);
+  margin-top: 50px;
+}
+
+
+
+
+

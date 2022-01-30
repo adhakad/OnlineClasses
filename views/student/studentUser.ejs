@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+    h1{
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;font-size:100px;
+    }
+    span{
+      color: #000;
+      font-family: Arial, Helvetica, sans-serif;font-size:115px;
+    }
+    .lable-height{
+      height: 60px!important;
+      color: #726180;font-family: Arial, Helvetica, sans-serif;font-size:35px;letter-spacing: .05em;
+    }
+    .input-height{
+      height: 140px!important;
+      border: 2px solid #aba1b1;
+      border-radius: 15px;
+      font-family: Arial, Helvetica, sans-serif;font-size:42px;letter-spacing: .045em;padding-left: 75px;
+    }
+    .btn-margin-top{
+      margin-top: 70px!important;
+    }
+    .margin-top{
+      margin-top: 75px!important;
+    }
+    .margin-top-logo{
+      margin-top: 75px!important;
+    }
+    .login-btn{
+      width: 100%;
+      height: 130px;
+      background-color: #724ccc!important;
+      border-radius: 15px;
+      color:#fff;font-family: Arial, Helvetica, sans-serif;font-size:45px;letter-spacing: .05em;
+    }
+    h2{
+      color: #4f4158;font-family: Arial, Helvetica, sans-serif;font-size:50px;letter-spacing: .025em;
+    }
+    a{
+      color: #724ccc;font-family: Arial, Helvetica, sans-serif;font-size:20px;letter-spacing: .01em;
+    }
+   .padding{
+      padding-top: 5vh;
+      padding-bottom: 8vh;
+   }
+   .padding-signup{
+    padding-top: 1vh;
+   }
+   .container-padding{
+     padding-left: 5%;
+     padding-right: 5%;
+   }
+   h3{
+    color: #4f4158;font-family: Arial, Helvetica, sans-serif;font-size:48px;letter-spacing: .025em;
+    }
+   .signup-span{
+    color: #724ccc;border-bottom: 2px solid#724ccc;font-size: 48px;
+   }
+   .signup-span-g{
+    color:#724ccc;font-size: 48px;
+   }
+   .form-alert{
+      height: 150px!important;
+      border: 2px solid rgb(238, 16, 153);
+      border-radius: 15px;
+      color:rgb(238, 16, 153);font-family: Arial, Helvetica, sans-serif;font-size:35px;letter-spacing: .040em;padding-left: 75px;padding-right: 75px;margin-bottom: 50px;
+    }
+  </style>
+  </head>
+  <body style="background-color: #724ccc;">
+    <div class="container-fluid container-padding">
+      <div class="row">
+      <div class="col-xs-12">
+        <h1 class="text-center margin-top-logo">z<span>o</span>class</h1>
+        <div style="margin-top:8vh;" >
+            <div class="panel panel-info"><div class="col-xs-12 text-center padding"><h2>Register to new student's detail</h2></div>
+            <div class="panel-body" style="padding: 10%;">
+              <form id="userForm" class="form-horizontal"  role="form">  
+                <div id="postResultDiv"></div>
+
+                      <div class="form-group">
+                        <label for="student_name" class="col-md-3 control-label lable-height">Student Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control input-height" id="student_name" placeholder="Enter Student Name" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-md-3 control-label lable-height">Student Email</label>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control input-height" id="email" placeholder="Enter Student Email" required>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="student_id" class="col-md-3 control-label lable-height">Student Id</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control input-height" id="student_id" placeholder="Enter Student Id" required>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="password" class="col-md-3 control-label lable-height">Password</label>
+                        <div class="col-md-9">
+                          <input type="password" class="form-control input-height" id="password" placeholder="Enteryour password" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="confpassword" class="col-md-3 control-label lable-height">Confirm Password</label>
+                        <div class="col-md-9">
+                          <input type="password" class="form-control input-height" id="confpassword" placeholder="Enter Confirm Password" required>
+                        </div>
+                      </div>                            
+                      <div class="form-group btn-margin-top">                                        
+                        <div class="col-xs-12">
+                        <input type="submit" name="submit" value="Submit" class="btn btn-primary login-btn">   
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+              </div>        
+            </div> 
+          </div>
+      </div>
+
+<script>
+$( document ).ready(function() {
+  
+  // SUBMIT FORM
+    $("#userForm").submit(function(event) {
+    // Prevent the form from submitting via the browser.
+    event.preventDefault();
+    ajaxPost();
+  });
+    
+    function ajaxPost(){
+      // PREPARE FORM DATA
+      var formData = {
+        student_name : $("#student_name").val(),
+        email: $("#email").val(),
+        student_id : $("#student_id").val(),
+        password : $("#password").val(),
+        confpassword : $("#confpassword").val(),
+      }
+      // DO POST
+      $.ajax({
+      type : "POST",
+      contentType : "application/json",
+      url : window.location +"/post",
+      data : JSON.stringify(formData),
+      dataType : 'json',
+      success : function(result, status, xhr) { 
+        $("#postResultDiv").html("<div class='form-group'><input type='text' class='form-control form-alert' value='"+result.redirectTo+"'></div>");
+      },
+      error : function(e) {
+        console.log('error')
+      }
+    }) 
+      // Reset FormData after Posting
+      resetData();
+    }
+    function resetData(){
+       $("#student_name").val("");
+       $("#email").val("");
+       $("#student_id").val("");
+       $("#password").val("");
+       $("#confpassword").val("");
+      }
+})
+</script>
+</body>
+</html>

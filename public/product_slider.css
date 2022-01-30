@@ -1,0 +1,8 @@
+.owl-carousel-fullwidth-product .owl-stage {
+    right: 80px;
+}
+.owl-carousel-fullwidth-product .img{ 
+    background:#f7f7f8;
+    border-radius:10px;
+    margin: 10px;
+}

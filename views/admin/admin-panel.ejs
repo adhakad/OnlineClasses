@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  h1{
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;font-size:100px;
+  }
+  span{
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;font-size:115px;
+  }
+  .lable-height{
+    height: 60px!important;
+    color: #726180;font-family: Arial, Helvetica, sans-serif;font-size:35px;letter-spacing: .05em;
+  }
+  .input-height{
+    height: 140px!important;
+    border: 2px solid #aba1b1;
+    border-radius: 15px;
+    font-family: Arial, Helvetica, sans-serif;font-size:42px;letter-spacing: .045em;padding-left: 35px;padding-right: 35px;
+  }
+  .btn-margin-top{
+    margin-top: 70px!important;
+  }
+  .margin-top{
+    margin-top: 75px!important;
+  }
+  .margin-top-logo{
+    margin-top: 75px!important;
+  }
+  .login-btn{
+    width: 100%;
+    height: 130px;
+    background-color: #724ccc!important;
+    border-radius: 15px;
+    color:#fff;font-family: Arial, Helvetica, sans-serif;font-size:45px;letter-spacing: .05em;
+  }
+  h2{
+    color: #4f4158;font-family: Arial, Helvetica, sans-serif;font-size:50px;letter-spacing: .025em;
+  }
+  a{
+    color: #724ccc;font-family: Arial, Helvetica, sans-serif;font-size:20px;letter-spacing: .01em;
+  }
+ .padding{
+    padding-top: 5vh;
+    padding-bottom: 8vh;
+ }
+ .padding-signup{
+  padding-top: 1vh;
+ }
+ .container-padding{
+   padding-left: 5%;
+   padding-right: 5%;
+ }
+ h3{
+  color: #4f4158;font-family: Arial, Helvetica, sans-serif;font-size:48px;letter-spacing: .025em;
+  }
+ .signup-span{
+  color: #724ccc;border-bottom: 2px solid#724ccc;font-size: 48px;
+ }
+ .signup-span-g{
+  color:#724ccc;font-size: 48px;
+ }
+ .form-alert{
+    height: 150px!important;
+    border: 2px solid rgb(238, 16, 153);
+    border-radius: 15px;
+    color:rgb(238, 16, 153);font-family: Arial, Helvetica, sans-serif;font-size:35px;letter-spacing: .040em;padding-left: 75px;padding-right: 75px;margin-bottom: 50px;
+  }
+</style>
+</head>
+  <body style="background-color: #724ccc;">
+    <div class="container-fluid container-padding">
+      <div class="row">
+      <div class="col-xs-12">
+        <h1 class="text-center margin-top-logo">z<span>o</span>class</h1>
+        <div style="margin-top:8vh;" >
+          <div class="panel panel-info"><div class="col-xs-12 text-center padding"><h2>Access to school admin dashboard</h2></div>
+            <div class="panel-body" style="padding: 10%;">
+            <% if(data.pin==121212){ %>
+                    <form id="userForm" class="form-horizontal"  role="form">  
+                      <div style="color: #000;" id="postResultDiv">
+                      </div>                              
+                  <div class="form-group">
+                    <label for="pin" class="col-md-3 control-label lable-height">Set Pin</label>
+                    <div class="col-md-9">
+                      <input type="number" class="form-control input-height" id="pin" placeholder="Set Your Pin...">
+                    </div>
+                  </div>   
+                  <div class="form-group btn-margin-top">                                        
+                    <div class="col-xs-12">
+                      <input type="submit" name="submit" value="Ok" class="btn btn-primary login-btn">   
+                    </div>
+                  </div>
+                </form>
+            <% }else{ %>
+                    <form id="userForms" class="form-horizontal"  role="form">  
+                      <div style="color: #000;" id="postResultDiv">
+                      </div>                          
+                  <div class="form-group">
+                    <label for="pin" class="col-md-3 control-label lable-height">Enter Pin</label>
+                    <div class="col-md-9">
+                      <input type="number" class="form-control input-height" id="pin" placeholder="Enter Your Pin...">
+                    </div>
+                  </div>
+                  <div class="form-group btn-margin-top">                                        
+                    <div class="col-xs-12">
+                      <input type="submit" name="submit" value="Ok" class="btn btn-primary login-btn">   
+                    </div>
+                  </div>
+                </form>
+            <% } %>
+          </div>        
+        </div> 
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+<script>
+  $( document ).ready(function() {
+    $("#userForms").submit(function(event) {
+      event.preventDefault();
+      ajaxPost();
+    });
+    function ajaxPost(){
+      var formData = {
+        pin : $("#pin").val(),
+      }
+      $.ajax({
+      type : "POST",
+      contentType : "application/json",
+      url : window.location + "/post",
+      data : JSON.stringify(formData),
+      dataType : 'json',
+      success : function(result, status, xhr) { 
+        if(result.redirectTo){
+          $("#postResultDiv").html("<p>"+result.redirectTo+"</p>");
+        }else if(result.redirect){
+          window.location.href = result.redirect
+        }
+      },
+      error : function(e) {
+        $("#postResultDiv").html("<p>" + "Post Already Exist On MongoDB Database! <br>" +"</p>"); 
+      }
+    })
+      resetData();
+    }
+    function resetData(){
+        $("#pin").val("");
+      }
+  })
+</script>
+
+
+<script>
+  $( document ).ready(function() {
+    $("#userForm").submit(function(event) {
+      event.preventDefault();
+      ajaxPost();
+    });
+    function ajaxPost(){
+      var formData = {
+        pin : $("#pin").val(),
+      }
+      $.ajax({
+      method : "put",
+      contentType : "application/json",
+      url : window.location + "/set-pin",
+      data : JSON.stringify(formData),
+      dataType : 'json',
+      success : function(result, status, xhr) { 
+        if(result.redirectTo){
+          $("#postResultDiv").html("<p>"+result.redirectTo+"</p>");
+        }else if(result.redirect){
+          window.location.href = result.redirect
+        }
+      },
+      error : function(e) {
+        $("#postResultDiv").html("<p>" + "Post Already Exist On MongoDB Database! <br>" +"</p>"); 
+      }
+    })
+      resetData();
+    }
+    function resetData(){
+      $("#pin").val("");
+    }
+  })
+</script>
+
+  </body>
+</html>
